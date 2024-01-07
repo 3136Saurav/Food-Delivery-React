@@ -1,5 +1,20 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 const ItemList = ({ items }) => {
+  const location = useLocation();
+  const dispatch = useDispatch();
   console.log("ItemList - ", items);
+
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItem(item));
+
+    console.log(item);
+  };
+
   return (
     <div>
       {items.map((item) => {
@@ -21,6 +36,16 @@ const ItemList = ({ items }) => {
               <p className="text-gray-500">{item?.card?.info?.description}</p>
             </div>
             <div className="p-4 w-4/12">
+              {location?.pathname?.includes("/restaurant") && (
+                <div className="absolute">
+                  <button
+                    onClick={() => handleAddItem(item)}
+                    className="p-2 mx-16 my-32 rounded-lg bg-green-600 font-bold text-white shadow-lg"
+                  >
+                    Add+
+                  </button>
+                </div>
+              )}
               <img
                 src={
                   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
