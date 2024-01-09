@@ -6,6 +6,7 @@ scripts/flow/*/.flowconfig
 *.pyc
 .grunt
 .parcel-cache
+/coverage
 _SpecRunner.html
 __benchmarks__
 build/
