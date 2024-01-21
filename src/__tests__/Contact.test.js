@@ -5,6 +5,14 @@ import "@testing-library/jest-dom";
 // it === test
 
 describe("Should Test the Contact Page Component", () => {
+  beforeEach(() => {
+    console.log("before each method");
+  });
+
+  beforeAll(() => {
+    console.log("before All");
+  });
+
   it("Should load the Contact component", () => {
     render(<Contact />);
 
@@ -36,5 +44,13 @@ describe("Should Test the Contact Page Component", () => {
     const allInputBoxes = screen.getAllByRole("textbox");
 
     expect(allInputBoxes.length).toBe(2);
+  });
+
+  afterEach(() => {
+    console.log("after Each");
+  });
+
+  afterAll(() => {
+    console.log("after All");
   });
 });
