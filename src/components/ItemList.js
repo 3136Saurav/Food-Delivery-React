@@ -20,6 +20,7 @@ const ItemList = ({ items }) => {
       {items.map((item) => {
         return (
           <div
+            data-testid="itemList"
             key={item?.card?.info?.id}
             className="border-gray-200 border-b-2 m-1 p-2 text-left flex"
           >
@@ -36,16 +37,15 @@ const ItemList = ({ items }) => {
               <p className="text-gray-500">{item?.card?.info?.description}</p>
             </div>
             <div className="p-4 w-4/12">
-              {location?.pathname?.includes("/restaurant") && (
-                <div className="absolute">
-                  <button
-                    onClick={() => handleAddItem(item)}
-                    className="p-2 mx-16 my-32 rounded-lg bg-green-600 font-bold text-white shadow-lg"
-                  >
-                    Add+
-                  </button>
-                </div>
-              )}
+              <div className="absolute">
+                <button
+                  onClick={() => handleAddItem(item)}
+                  className="p-2 mx-16 my-32 rounded-lg bg-green-600 font-bold text-white shadow-lg"
+                >
+                  Add+
+                </button>
+              </div>
+
               <img
                 src={
                   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
