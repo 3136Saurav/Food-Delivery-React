@@ -10,3 +10,12 @@ it("Should render the Restaurant Card component with props data", () => {
 
   expect(name).toBeInTheDocument();
 });
+
+it("Should render the Restaurant Card component with props data", () => {
+  const RestaurantCardHighRating = withHigherRating(RestaurantCard);
+  render(<RestaurantCardHighRating restaurant={MOCK_DATA} />);
+
+  const label = screen.getByText("HOT");
+  console.log(label);
+  expect(label).toBeInTheDocument();
+});

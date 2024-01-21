@@ -50,6 +50,7 @@ const Body = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           placeholder="Search Restaurant"
+          data-testid="searchInput"
         />
         <button
           className="m-5 bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
@@ -71,7 +72,7 @@ const Body = () => {
           className="m-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
             const topRatedRestaurants = listOfRestaurants.filter(
-              (restaurant) => restaurant.info.avgRating > 4.4
+              (restaurant) => restaurant.info.avgRating > 4.5
             );
 
             setFilteredRestaurants(topRatedRestaurants);
@@ -86,7 +87,7 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            {restaurant.info.avgRating >= 4.5 ? (
+            {restaurant.info.avgRating == 4.5 ? (
               <RestaurantCardHighRating restaurant={restaurant} />
             ) : (
               <RestaurantCard restaurant={restaurant} />
